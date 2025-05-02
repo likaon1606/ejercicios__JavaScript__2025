@@ -240,3 +240,95 @@ const contarEstudiantesAprobados = estudiantes2.reduce((acum, estudiante2) => {
 console.log(contarEstudiantesAprobados);
 
 
+//* 🧪 Ejercicio práctico 6. Calcular el promedio de calificaciones
+
+// Tienes un array de estudiantes con sus nombres y calificaciones. Tu objetivo es usar reduce para calcular el promedio total de todas las calificaciones.
+
+//todo 🧠 Pista:
+// Debes usar reduce para sumar todas las calificaciones y luego dividir entre la cantidad de estudiantes. Recuerda: array.length te da el total.
+
+//? 📝 Objetivo final:
+// Imprimir en consola el promedio total:
+
+const students = [
+  { nombre: 'Ana', calificacion: 85 },
+  { nombre: 'Luis', calificacion: 92 },
+  { nombre: 'Carlos', calificacion: 78 },
+  { nombre: 'Laura', calificacion: 95 }
+];
+
+const promedioCalificaciones = students.reduce((acum, student) => {    
+
+  return acum + student.calificacion
+}, 0)
+
+const promedio = promedioCalificaciones / students.length
+
+console.log('Promedio Total: ', promedio);
+
+//todo SE PUEDE HACER EL PROMEDIO DENTRO DEL .reduce de la siguiente manera:
+
+const students2 = [
+  { nombre: 'Ana', calificacion: 85 },
+  { nombre: 'Luis', calificacion: 92 },
+  { nombre: 'Carlos', calificacion: 78 },
+  { nombre: 'Laura', calificacion: 95 }
+];
+
+//* Calculamos el promedio directamente en reduce
+const promedio2 = estudiantes.reduce((acum, estudiante, index, array) => {
+  //* Sumamos la calificación al acumulador
+  acum += estudiante.calificacion;
+
+  //* Si es el último elemento, dividimos dentro del reduce
+  if (index === array.length - 1) {
+    return acum / array.length;
+  }
+
+  //* Si no es el último, seguimos sumando
+  return acum;
+}, 0);
+
+console.log('Promedio Total:', promedio);
+
+
+
+// 🧩 Ejercicio 7: Agrupar ventas por mes y calcular total
+
+// 🎯 Objetivo:
+// Usar reduce para obtener un objeto así:
+
+//? {
+//?   Enero: 350,
+//?   Febrero: 550,
+//?   Marzo: 100
+//? }
+
+// Cada clave representa el mes y el valor es el total vendido en ese mes.
+
+const ventas = [
+  { producto: 'Camisa', mes: 'Enero', monto: 200 },
+  { producto: 'Pantalón', mes: 'Febrero', monto: 300 },
+  { producto: 'Zapatos', mes: 'Enero', monto: 150 },
+  { producto: 'Gorra', mes: 'Marzo', monto: 100 },
+  { producto: 'Camisa', mes: 'Febrero', monto: 250 },
+];
+
+const reporteVentas = ventas.reduce((acum, venta) => {
+  
+  if (!acum[venta.mes]) {
+    acum[venta.mes] = 0;    
+  }
+
+  acum[venta.mes] += venta.monto
+
+  return acum;
+}, {})
+
+console.log(reporteVentas);
+
+
+
+
+
+
