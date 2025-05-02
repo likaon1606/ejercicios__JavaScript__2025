@@ -153,3 +153,90 @@ const contarVotos = votos.reduce((acum, voto) => {
 console.log(contarVotos);
 
 
+//* 🧪 Ejercicio práctico 4. Agrupar productos por rango de precio
+
+// Objetivo: Utilizaremos reduce para agrupar productos en diferentes rangos de precios. Por ejemplo: "menos de 50", "entre 50 y 100", "más de 100".
+
+// Imagina que tienes una lista de productos, cada uno con un nombre y un precio:
+const productos = [
+  { nombre: 'Camiseta', precio: 30 },
+  { nombre: 'Pantalón', precio: 60 },
+  { nombre: 'Zapatos', precio: 120 },
+  { nombre: 'Sombrero', precio: 15 },
+  { nombre: 'Chaqueta', precio: 90 },
+  { nombre: 'Guantes', precio: 20 }
+];
+
+//? Objetivo del ejercicio:
+// Agrupar estos productos en tres categorías de precios:
+// Menos de 50
+// Entre 50 y 100
+// Más de 100
+
+//TODO 💡 Pista:
+// Usa reduce para iterar sobre la lista de productos.
+// En cada iteración, usa una condición para decidir en qué grupo se debe incluir el producto.
+// Si el grupo (rango de precio) no existe, inicialízalo.
+// Agrega el nombre del producto a la lista correspondiente.
+
+//? Resultado esperado:
+// {
+//   'menos de 50': [ 'Camiseta', 'Sombrero', 'Guantes' ],
+//   'entre 50 y 100': [ 'Pantalón', 'Chaqueta' ],
+//   'más de 100': [ 'Zapatos' ]
+// }
+
+const agruparProductos = productos.reduce((acum, producto) => {
+
+  let clave; // Se declara vacía así o así: let clave = ''
+
+  if (producto.precio < 50) {
+    clave = 'menos de 50'
+  } else if (producto.precio > 100) {
+    clave = 'Más de 100'
+  } else if (producto.precio <= 100) {
+    clave = 'Entre 50 y 100'
+  }
+  
+  if (!acum[clave]) {
+    acum[clave] = []
+  }
+
+  acum[clave].push(producto.nombre)
+
+  return acum;
+}, {})
+console.log(agruparProductos);
+
+//* 🧪 Ejercicio práctico 5. 🧪 Caso práctico: estudiantes que aprueban o no
+
+// Tienes un array de objetos donde cada estudiante tiene un nombre y una nota. Queremos contar cuántos aprobaron (nota ≥ 60) y cuántos no.
+
+//? Usando reduce, devuelve un objeto que tenga la forma:
+
+// {
+//   aprobados: X,
+//   reprobados: Y
+// }
+
+// Donde X es el número de estudiantes con nota ≥ 60 y Y los que tienen menos de 60.
+
+const estudiantes2 = [
+  { nombre: 'Ana', nota: 55 },
+  { nombre: 'Luis', nota: 42 },
+  { nombre: 'Carlos', nota: 77 },
+  { nombre: 'Karla', nota: 59 },
+  { nombre: 'Laura', nota: 90 },
+  { nombre: 'Pedro', nota: 38 }
+];
+
+const contarEstudiantesAprobados = estudiantes2.reduce((acum, estudiante2) => {
+
+  const clave2 = estudiante2.nota >= 60 ? 'Aprobados' : 'Reprobados'
+  acum[clave2] = (acum[clave2] || 0) + 1
+
+  return acum;
+}, {})
+console.log(contarEstudiantesAprobados);
+
+
