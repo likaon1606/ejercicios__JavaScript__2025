@@ -191,3 +191,12 @@ const productosVarios = [
   { nombre: 'uva', precio: 15 },
   { nombre: 'melón', precio: 18 }
 ];
+
+let sumaFrutas = 0
+
+for(let i = 0; i < productosVarios.length; i++) {
+  if(productosVarios[i].nombre === 'sandía' || productosVarios[i].nombre === 'melón') {
+    sumaFrutas += productosVarios[i].precio
+  }
+}
+console.log(sumaFrutas);
