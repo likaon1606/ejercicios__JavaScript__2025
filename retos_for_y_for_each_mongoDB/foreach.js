@@ -4,9 +4,7 @@
 
 const colores = ['rojo', 'verde', 'azul'];
 
-colores.forEach(color => {
-  console.log(`Color: ${color}`);
-});
+colores.forEach(color => console.log(`Color: ${color}`));
 
 //* Explicación:
 // forEach recorre cada elemento del array y ejecuta una función por cada uno.
@@ -17,9 +15,7 @@ colores.forEach(color => {
 const valores = [1, 2, 3, 4];
 let total = 0;
 
-valores.forEach(valor => {
-  total += valor;
-});
+valores.forEach(valor => total += valor);
 
 console.log("Total:", total);
 //* Explicación:
@@ -30,9 +26,7 @@ console.log("Total:", total);
 
 const frutas = ['naranja', 'banana', 'sandía'];
 
-frutas.forEach((fruta, index) => {
-  console.log(`Fruta #${index + 1}: ${fruta}`);
-});
+frutas.forEach((fruta, index) => console.log(`Fruta #${index + 1}: ${fruta}`));
 
 //* Explicación:
 // forEach permite obtener el índice como segundo parámetro.
@@ -97,20 +91,50 @@ console.log("Total de manzana y plátano:", totalUnitario);
 // Si sí, se agrega su precio al total.
 
 
-
-
-
 //TODO 🧩 Ejercicios con forEach (para que resuelvas tú):
 
 //? Imprime “Hola” seguido de cada nombre del array ['Luis', 'Mario', 'Sofía'].
 
+const names = ['Luis', 'Mario', 'Sofía']
+
+names.forEach(name => console.log(`¡Hola!, ${name}`))
+
+
 //? Dado const precios = [100, 200, 300], imprime el precio más IVA (16%).
+
+const precios = [100, 200, 300]
+
+precios.forEach(precio => console.log(`Precio más IVA: ${precio * 1.16}`))
+
 
 //? Dado un array de const mascotas = ['perro', 'gato', 'loro'], imprime su nombre en mayúsculas.
 
-//? Dado un array de objetos const productos = [{nombre: 'Libro', stock: 3}, ...], imprime solo los productos con stock menor a 5.
+const mascotas = ['perro', 'gato', 'loro']
+
+mascotas.forEach(mascota => console.log(mascota.toUpperCase()))
+
+
+//? Dado un array de objetos const productos = [{nombre: 'Libro', stock: 3}, ...], imprime solo los productos con stock menor a 15.
+
+const productos = [{nombre: 'Libro', stock: 3}, {nombre: 'Separador', stock: 30}, {nombre: 'Crucigrama', stock: 13}]
+
+productos.forEach(producto => console.log(producto.stock < 15 ? producto : ''))
+
 
 //? Dado const ventas = [10, 20, 15], crea un nuevo array con las ventas acumuladas (ej: [10, 30, 45]).
+
+const ventas = [10, 20, 15]
+
+let ventasAcumuladas = []
+let sumaAcumulada = 0
+
+ventas.forEach(venta => {
+  sumaAcumulada += venta
+  ventasAcumuladas.push(sumaAcumulada)
+  
+})
+console.log(ventasAcumuladas);
+
 
 //? Usando el mismo el array, suma solo los productos que sean "pera" o "uva". Guarda el resultado en una variable llamada totalPeraUva. Imprime el total al final.
 
@@ -124,4 +148,11 @@ const productosVarios = [
   { nombre: 'melón', precio: 18 }
 ];
 
+let totalPeraUva = 0
 
+productosVarios.forEach(producto => {
+  if(producto.nombre === 'pera' || producto.nombre === 'uva') {
+    totalPeraUva += producto.precio
+  }
+})
+console.log(totalPeraUva);
