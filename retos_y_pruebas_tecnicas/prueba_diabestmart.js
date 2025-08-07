@@ -40,10 +40,14 @@ for(let i = 0; i < nums.length; i++) {
   }
 }
 
+
+
+
+
 //? *** usando un solo for*****
 
 const nums2 = [2, 7, 11, 15];
-const objetivo = 9;
+const objetivo = 17;
 const vistos = {};
 
 for (let i = 0; i < nums2.length; i++) {
